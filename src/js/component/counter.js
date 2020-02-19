@@ -1,24 +1,50 @@
 import React, { useState, useEffect } from "react";
 
 export function Counter() {
-	const [luna, setLuna] = useState(0);
-
-	let handleClick = () => {
-		setLuna(luna + 1);
-	};
+	const [firstDigit, setfirstDigit] = useState(0);
+	const [secondDigit, setsecondDigit] = useState(0);
+	const [thirdDigit, setthirdDigit] = useState(0);
+	const [pause, setPause] = useState(false);
+	let timer;
+	function stop() {
+		if (pause === false) {
+			clearInterval(timer);
+		}
+	}
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			console.log("This will run after 1 second!");
+		const timer = setInterval(() => {
+			setfirstDigit(firstDigit => firstDigit + 1);
 		}, 1000);
-		return () => clearTimeout(timer);
+	}, []);
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setsecondDigit(secondDigit => secondDigit + 1);
+		}, 10000);
+		return () => clearInterval(timer);
+	}, []);
+
+	useEffect(() => {
+		const timer = setInterval(() => {
+			setthirdDigit(thirdDigit => thirdDigit + 1);
+		}, 100000);
+		return () => clearInterval(timer);
 	}, []);
 
 	return (
 		<>
-			<p>{luna}</p>
-
-			<button onClick={handleClick}>click me</button>
+			<p>
+				{thirdDigit % 1000}
+				{secondDigit % 100}
+				{firstDigit % 10}
+				<button
+					onClick={() => {
+						setPause(!pause), stop();
+					}}>
+					Click me
+				</button>
+			</p>
 		</>
 	);
 }
