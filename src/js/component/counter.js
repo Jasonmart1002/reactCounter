@@ -28,7 +28,7 @@ export function Counter() {
 	useEffect(() => {
 		const timer = setInterval(() => {
 			setthirdDigit(thirdDigit => thirdDigit + 1);
-		}, 1000000);
+		}, 100000);
 		return () => clearInterval(timer);
 	}, []);
 
@@ -37,8 +37,8 @@ export function Counter() {
 			<div className="jumbotron jumbotron-fluid">
 				<div className="container text-center">
 					<h1 className="display-4 jumbot">
-						{thirdDigit % 1000}
-						{secondDigit % 100}
+						{thirdDigit % 10}
+						{secondDigit % 10}
 						{firstDigit % 10}
 					</h1>
 					<p className="lead">
