@@ -28,29 +28,31 @@ export function Counter() {
 	useEffect(() => {
 		const timer = setInterval(() => {
 			setthirdDigit(thirdDigit => thirdDigit + 1);
-		}, 100000);
+		}, 1000000);
 		return () => clearInterval(timer);
 	}, []);
 
 	return (
 		<>
-			<div class="jumbotron jumbotron-fluid">
-				<div class="container text-center">
-					<h1 class="display-4 jumbot">
+			<div className="jumbotron jumbotron-fluid">
+				<div className="container text-center">
+					<h1 className="display-4 jumbot">
 						{thirdDigit % 1000}
 						{secondDigit % 100}
 						{firstDigit % 10}
 					</h1>
-					<p class="lead">
+					<p className="lead">
 						<button
 							type="button"
-							class="btn btn-outline-success"
+							className="btn btn-outline-success"
 							onClick={() => {
 								setPause(!pause), stop();
 							}}>
 							Pause
 						</button>
-						<button type="button" class="btn btn-outline-success">
+						<button
+							type="button"
+							className="btn btn-outline-success">
 							Play
 						</button>
 					</p>
