@@ -34,17 +34,28 @@ export function Counter() {
 
 	return (
 		<>
-			<p>
-				{thirdDigit % 1000}
-				{secondDigit % 100}
-				{firstDigit % 10}
-				<button
-					onClick={() => {
-						setPause(!pause), stop();
-					}}>
-					Click me
-				</button>
-			</p>
+			<div class="jumbotron jumbotron-fluid">
+				<div class="container text-center">
+					<h1 class="display-4 jumbot">
+						{thirdDigit % 1000}
+						{secondDigit % 100}
+						{firstDigit % 10}
+					</h1>
+					<p class="lead">
+						<button
+							type="button"
+							class="btn btn-outline-success"
+							onClick={() => {
+								setPause(!pause), stop();
+							}}>
+							Pause
+						</button>
+						<button type="button" class="btn btn-outline-success">
+							Play
+						</button>
+					</p>
+				</div>
+			</div>
 		</>
 	);
 }
